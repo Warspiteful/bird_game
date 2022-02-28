@@ -6,22 +6,64 @@
 define e = Character("Eileen")
 
 
+
 # The game starts here.
 
-label start:
+init:
+    $ imagebox = Position(xpos=0.142, ypos=0.694)
+    $ namebox = Position(xpos=0.123, ypos=0.687)
+    $ bgbox = Position(xpos=0.65, ypos=0.708)
 
-    call init_module_adv
-    jump example_room_enter
+label before_main_menu:
+   play music main noloop
+   play ambient main_amb loop
+   return
+
+
+label start:
+    $ seagull_return = False
+    $ owl_visit = False
+    $ owl_return = False
+
+    call init_module_adv from _call_init_module_adv
+    scene bg black
+    show char menuBG at imagebox
+    show UI
+    play music square
+    $ notify_music()
+    $ user = renpy.input("What is your name?")
+    $ user = user.strip()
+    if not user:
+        $ user = "Chrys Anthem"
+    show bg square at bgbox with dissolve
+    hide UI
+    show UI
+    "It's a lovely Autumn afternoon and you're a peckish pigeon off to make some friends."
+    "It might be tough but you've spent the past couple days building up courage."
+    show misc newspaper at bgbox with dissolve
+    "There's a old, human man throwing down bread crumbs in this city square."
+    "Birds like bread, right? You suppose this is a good a place as any to start off."
+    $ adv_mode.clear_actions()
+    jump main_start
+
+label main_start:
+    show bg square with dissolve
+    play music square
+    $ notify_music()
+
+    show char menuBG
+    $ adv_mode.clear_actions()
+    if owl_visit == False:
+        $ adv_mode.register_action("look", "Owl", "start_owl")
+    else:
+        $ adv_mode.register_action("move", "Coffee Shop", "coffee_start")
+    $ adv_mode.register_action("move", "Seaside", "start_seagull")
+    $ adv_mode.register_action("move", "Alleyway", "start_ostritch")
+
+
+    call screen adv_menu
 
 define t = Character("Tipsy")
-
-####### ROOM 1 ########
-# Jump to this label after initializing the module to start the demo
-label example_room_enter:
-    scene bg uni
-    jump example_room_menu
-
-
 # Creation of the room menu
 label example_room_menu:
     # First we clear all old ADV actions
@@ -32,7 +74,10 @@ label example_room_menu:
     $ adv_mode.register_action("look", "Information board", "example_room_look_board")
     $ adv_mode.register_action("look", "Students", "example_room_look_students")
     $ adv_mode.register_action("look", "Street Lamps", "example_room_look_lamp")
-    $ adv_mode.register_action("look", "Street Lamps", "example_room_look_lamp")
+    $ adv_mode.register_action("talk", "Crow", "start_crow")
+    $ adv_mode.register_action("talk", "Seagull", "start_seagull")
+
+
 
 
     $ adv_mode.register_action("think", "Self", "example_room_think_self")

@@ -12,13 +12,13 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("bird_game")
+define config.name = _("Fluttering Friends")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## The version of the game.
@@ -30,6 +30,8 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Created for Passionfruit 2022 by Sapling Studios, a group of college students
+from Emerson College, Berklee College of Music, and Northeastern University.
 """)
 
 
@@ -37,7 +39,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "bird_game"
+define build.name = "flutteringFriends"
 
 
 ## Sounds and music ############################################################
@@ -95,6 +97,7 @@ define config.end_game_transition = None
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.
 
+define config.layers = [ 'master', 'transient', 'screens', 'border_overlay', 'overlay' ]
 
 ## Window management ###########################################################
 ##
@@ -150,7 +153,7 @@ define config.save_directory = "bird_game-1644722343"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/103_icon_noback.png"
 
 
 ## Build configuration #########################################################

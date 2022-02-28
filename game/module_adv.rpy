@@ -9,7 +9,7 @@
 #
 # License:
 # Japanese Style Adventure Menu for RenPy by TheSchnappi is licensed under CC BY 4.0. To view a copy of this
-# license, visit https://creativecommons.org/licenses/by/4.0 
+# license, visit https://creativecommons.org/licenses/by/4.0
 #
 #
 # Changelog:
@@ -82,7 +82,7 @@ init python:
         """
         This function increases the given label_id for keeping track how
         often the player has repeated an action.
-        
+
         Calling this function for a label_id the first time, results in the
         creation of this id. So it is just a wrapper around a dictionary for
         easier control.
@@ -226,7 +226,6 @@ style module_adv_position:
     yalign                      module_adv_menu_position_yalign
 
 style module_adv_verb_menu:
-    background                  module_adv_verb_menu_background
     margin                      module_adv_verb_menu_margin
     padding                     module_adv_verb_menu_padding
     xsize                       module_adv_verb_menu_width
@@ -287,5 +286,5 @@ label init_module_adv:
     # Call this label at the games start once before using the menu
     $ _module_adv_repeat_list = {}
     $ adv_mode = ModuleADVMenuContainer()
-    call init_module_adv_verbs
+    call init_module_adv_verbs from _call_init_module_adv_verbs
     return

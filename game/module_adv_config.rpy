@@ -9,7 +9,7 @@
 #
 # License:
 # Japanese Style Adventure Menu for RenPy by TheSchnappi is licensed under CC BY 4.0. To view a copy of this
-# license, visit https://creativecommons.org/licenses/by/4.0 
+# license, visit https://creativecommons.org/licenses/by/4.0
 
 init offset = -1
 
@@ -22,8 +22,8 @@ define module_adv_spacing = 0
 
 define module_adv_action_menu_background = None
 
-define module_adv_menu_position_xalign = 0.02
-define module_adv_menu_position_yalign = 0.5
+define module_adv_menu_position_xalign = 0.05
+define module_adv_menu_position_yalign = 0.4
 
 #### Variables for the design of the ADV verbs
 
@@ -53,9 +53,9 @@ define module_adv_verb_menu_button_background_selected_hover    = "#ffffff88"
 ## Verb icon font variables
 define module_adv_verb_icon_font                                = "DejaVuSans.ttf"
 define module_adv_verb_icon_size                                = 30
-define module_adv_verb_icon_font_color                          = "#888888"
-define module_adv_verb_icon_font_color_hover                    = "#dddddd"
-define module_adv_verb_icon_font_color_selected                 = "#ffffff"
+define module_adv_verb_icon_font_color                          = "#ffffff"
+define module_adv_verb_icon_font_color_hover                    = "#a4a8de"
+define module_adv_verb_icon_font_color_selected                 = "#9298f0"
 define module_adv_verb_icon_font_color_selected_hover           = "#ffffff"
 define module_adv_verb_icon_font_outline                        = [ (absolute(2), "#000", absolute(0), absolute(0)) ]
 
@@ -69,9 +69,9 @@ define module_adv_verb_icon_yalign                              = 0.5
 ## Verb text font variables
 define module_adv_verb_font                                     = "DejaVuSans.ttf"
 define module_adv_verb_font_size                                = 30
-define module_adv_verb_font_color                               = "#888888"
-define module_adv_verb_font_color_hover                         = "#dddddd"
-define module_adv_verb_font_color_selected                      = "#ffffff"
+define module_adv_verb_font_color                               = "#ffffff"
+define module_adv_verb_font_color_hover                         = "#a4a8de"
+define module_adv_verb_font_color_selected                      = "#9298f0"
 define module_adv_verb_font_color_selected_hover                = "#ffffff"
 define module_adv_verb_font_outline                             = [ (absolute(2), "#000", absolute(0), absolute(0)) ]
 

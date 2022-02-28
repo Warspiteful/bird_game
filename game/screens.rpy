@@ -136,7 +136,7 @@ style window:
     yalign gui.textbox_yalign
     ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    #background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -223,7 +223,7 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 920
     yanchor 0.5
 
     spacing gui.choice_spacing
@@ -365,7 +365,16 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+        imagebutton:
+            auto "/gui/UI/101_mainmenu_button_play_%s.png" focus_mask True xpos 0 ypos 0 action  Play("second", audio.button,0.5),Start()
+        imagebutton:
+            auto "/gui/UI/101_mainmenu_button_credits_%s.png" focus_mask True xpos 0 ypos 0 action Play("second", audio.button,0.5), ShowMenu("credits")
+        imagebutton:
+            auto "/gui/UI/101_mainmenu_button_settings_%s.png" focus_mask True xpos 0 ypos 0 action Play("second", audio.button,0.5), ShowMenu("preferences")
+        imagebutton:
+            auto "/gui/UI/101_mainmenu_button_quit_%s.png" focus_mask True xpos 0 ypos 0 action Play("second", audio.button,0.5), Quit(confirm=not main_menu)
+        image "/gui/UI/101_mainmenu_title.png"
+
 
     if gui.show_name:
 
@@ -388,8 +397,6 @@ style main_menu_version is main_menu_text
 style main_menu_frame:
     xsize 420
     yfill True
-
-    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -425,6 +432,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
         add gui.main_menu_background
     else:
         add gui.game_menu_background
+        add gui.game_overlay
 
     frame:
         style "game_menu_outer_frame"
@@ -1193,7 +1201,26 @@ style confirm_button:
 style confirm_button_text:
     properties gui.button_text_properties("confirm_button")
 
+screen credits():
+    tag menu
 
+    frame:
+        background "gui/UI/101_mainmenu_preview.png"
+        image  "gui/nvl.png"
+        vbox: #This puts the elements in a vertical box, you could use an hbox or a grid or a fixed, etc.
+            xpos 540
+            ypos 150
+            spacing 45
+
+
+            text "Jonathon \"Jon Bic\" Bickelhaupt - @AmIJonBic - Writer"
+            text "Ray Demers - @ raydee99 - Composer"
+            text "Liz Jackson - @imlizjackson - Artist"
+            text "Gem - @ gemhunter178 - Artist"
+            text "Justin Almendral - @warspiteful - Programmer"
+            text "Steve Lausier - Writer"
+            text "Jade Edwards- @jadegalexandria - Writer"
+            textbutton _("Return") action Return()
 ## Skip indicator screen #######################################################
 ##
 ## The skip_indicator screen is displayed to indicate that skipping is in
@@ -1275,19 +1302,35 @@ transform notify_appear:
     on hide:
         linear .5 alpha 0.0
 
+screen notify_music(song):
+    zorder 100
+    style_prefix "notify"
+    layer "border_overlay"
+    frame at notify_appear:
+        has hbox:
+            spacing 30
+        text "Now playing: {}".format(song) slow_cps True
+    timer 3.25 action Hide('notify_music')
+
 
 style notify_frame is empty
 style notify_text is gui_text
 
 style notify_frame:
-    ypos gui.notify_ypos
+    ypos 20
 
-    background Frame("gui/notify.png", gui.notify_frame_borders, tile=gui.frame_tile)
-    padding gui.notify_frame_borders.padding
+    background Frame("gui/speech.webp", 35,35)
+    ypadding 18
+    left_padding 50
+    right_padding 100
+    xalign 1.02
+
+define pbh_brown = "#422525"
 
 style notify_text:
     properties gui.text_properties("notify")
-
+    size 28
+    color pbh_brown
 
 ## NVL screen ##################################################################
 ##
