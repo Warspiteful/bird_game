@@ -95,8 +95,13 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+transform NullTransform:
+  pass
 screen say(who, what):
     style_prefix "say"
+    default side_image = None
+    default two_window = False
+    default window_transform = NullTransform
 
     window:
         id "window"
@@ -1319,7 +1324,7 @@ style notify_text is gui_text
 style notify_frame:
     ypos 20
 
-    background Frame("gui/speech.webp", 35,35)
+#    background Frame("gui/speech.webp", 35,35)
     ypadding 18
     left_padding 50
     right_padding 100

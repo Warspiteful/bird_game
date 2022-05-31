@@ -157,7 +157,7 @@ label aus_escape_fail:
 label aus_escape1A:
     show char aus sneak Can
     a "Understood!"
-    a "Aussie quickly folds back into the trash can, making the alleyway inconspicuous once again."
+    "Aussie quickly folds back into the trash can, making the alleyway inconspicuous once again."
     jump aus_escape2
 
 label aus_escape1B:

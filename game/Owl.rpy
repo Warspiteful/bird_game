@@ -36,7 +36,7 @@ label reading2:
     show char bal neutral
     un "I..."
     "They stop and clear their throat. Small bits of an owl pellet come flying out."
-    un "Apologies. I am reading the collected works of the Bard of Avon"
+    un "Apologies. I am reading the collected works of the Bard of Avon."
 label reading3:
     menu:
         "Who?":
@@ -177,7 +177,7 @@ label whatReading:
     b "I am reading the collected works of the Bard of Avon"
     menu:
         "Who?":
-            jump reading2
+            jump reading4
         "Ah yes. I am familiar with Shakespeare's work.":
             jump readingA
 
@@ -309,7 +309,8 @@ label coffeeOwlA1:
             show char bal interested
             b "Well, that's not right. Why don't you try again?"
             $slight = False
-            jump coffeOwlA1
+            jump coffeeOwlA1
+
         "The tree climber the squirrel while hiding the nut.":
             show char bal neutral
             jump coffeeOwlA3
